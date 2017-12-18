@@ -1,0 +1,39 @@
+<div class="columns is-vcentered">
+    <div class="column is-three-fifths is-offset-one-fifth has-text-centered">
+        <div class="columns is-desktop is-vcentered">
+            <div class="column is-2">
+                    <button mat-raised-button color="primary" (click)="initTimer()">
+                        <mat-icon>play_arrow</mat-icon>
+                        Start Timer
+                    </button>
+            </div>
+            <div class="column is-2">
+                <button mat-raised-button color="accent" (click)="pauseTimer()">
+                    <mat-icon>{{isTimerPaused ? 'play_circle_outline' : 'pause'}}</mat-icon>
+                    {{isTimerPaused ? 'Resume Timer' : 'Pause Timer'}}
+                </button>
+            </div>
+
+            <div class="column is-2">
+                <button mat-raised-button color="warn" (click)="resetTimer()">
+                    <mat-icon>replay</mat-icon>
+                    Reset Timer
+                </button>
+            </div>
+
+            <div class="column is-2">
+                <button (click)="openCustomTimerDialog()">
+                    Custom Timer
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="has-text-centered">
+    <h1>{{time || '25:00'}}</h1>
+</div>
+<!--*ngIf="timerService.todoros.length > 0"-->
+
+

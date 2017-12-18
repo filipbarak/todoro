@@ -1,0 +1,47 @@
+<nav class="level">
+    <div class="level-left">
+        <div class="level-item is-5">
+            <mat-form-field>
+                <input type="number"
+                       max="59"
+                       matInput
+                       #minutes>
+                <mat-placeholder>
+                    <mat-icon>timer</mat-icon>
+                    minutes
+                </mat-placeholder>
+            </mat-form-field>
+        </div>
+    </div>
+    <p class="level-item has-text-centered">
+        <img src="../../assets/rsz_clolnpng.png" alt="">
+    </p>
+    <div class="level-right is-5">
+        <div class="level-item">
+            <mat-form-field>
+                <input type="number"
+                       max="59"
+                       matInput #seconds>
+                <mat-placeholder>
+                    <mat-icon>timer</mat-icon>
+                    seconds
+                </mat-placeholder>
+            </mat-form-field>
+        </div>
+    </div>
+</nav>
+<div class="columns">
+    <div class="column is-half is-pulled-left">
+        <p class="has-text-right">
+            <button [mat-dialog-close]="saveTime(minutes.value, seconds.value)"
+                    mat-raised-button
+                    color="accent">Save
+            </button>
+        </p>
+    </div>
+    <div class="column is-half is-pulled-right">
+        <p class="has-text-left">
+            <button mat-raised-button mat-dialog-close>Cancel</button>
+        </p>
+    </div>
+</div>

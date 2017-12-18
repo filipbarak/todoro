@@ -1,0 +1,30 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+$pink-main: #FF3860;
+$gray: #f2f2f2;
+
+html {
+  background-color: $gray;
+}
+
+$sizes: (0,10,15,20,25,30,50);
+$positions: ('top','left','bottom','right');
+
+@each $size in $sizes {
+  @each $position in $positions {
+    .m-#{$position}-#{$size} {
+      margin-#{$position}: $size + px;
+    }
+    .p-#{$position}-#{$size} {
+      padding-#{$position}: $size + px;
+    }
+  }
+}
+
+.mat-tab-label-active {
+  background-color: $pink-main;
+  color: white;
+}
+
+.small-font {
+  font-size: small;
+}

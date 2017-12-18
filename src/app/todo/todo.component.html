@@ -1,0 +1,43 @@
+<nav class="level">
+    <p class="level-item has-text-centered m-top-20">
+        <mat-form-field>
+            <input matInput
+                   #input
+                   #todoInputField="ngModel"
+                   id="todoInputField"
+                   placeholder="{{setPlaceholder()}}"
+                   [(ngModel)]="todoValue"
+                   (keyup.Enter)="openDialog(input)">
+            <button *ngIf="todoValue"
+                    mat-button
+                    matSuffix
+                    mat-icon-button
+                    color="warn"
+                    (click)="openDialog(input)">
+                <mat-icon>add_box</mat-icon>
+            </button>
+        </mat-form-field>
+    </p>
+</nav>
+
+
+<div *ngIf="timerService.todoros.length > 0" class="columns is-mobile">
+    <div class="column is-three-fifths is-offset-one-fifth">
+        <mat-tab-group headerPosition="above">
+            <mat-tab *ngFor="let todoro of timerService.todoros; let i = index">
+                <ng-template mat-tab-label>
+                    <p>{{todoro['todo']}}</p>
+                    <button (click)="deleteTodoro(timerService.todoros, i)"
+                            mat-icon-button>
+                        <mat-icon class="small-font m-left-20">close</mat-icon>
+                    </button>
+                </ng-template>
+                <mat-card *ngIf="todoro['description']" class="small-font">
+                    <mat-card-content>
+                        {{todoro['description']}}
+                    </mat-card-content>
+                </mat-card>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

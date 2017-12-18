@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Would you like to add a description for {{data.title ? data.title : 'your unnamed project'}}?</h1>
+<div class="level-item has-text-centered">
+    <mat-form-field [floatLabel]="false">
+  <textarea matInput placeholder="Description" matTextareaAutosize matAutosizeMinRows="2"
+            matAutosizeMaxRows="8"
+            #description
+            style="font-size: small"></textarea>
+    </mat-form-field>
+</div>
+<nav class="level">
+    <div class="level-left">
+        <div class="level-item">
+            <button mat-raised-button color="accent" [mat-dialog-close]="description.value">Add</button>
+        </div>
+    </div>
+    <div class="level-right">
+        <div class="level-item">
+            <button mat-raised-button mat-dialog-close>Cancel</button>
+        </div>
+    </div>
+</nav>
