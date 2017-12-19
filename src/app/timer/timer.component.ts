@@ -37,14 +37,16 @@ export class TimerComponent implements OnInit {
     }
 
     resetTimer() {
-        this.countDown.unsubscribe();
+        if (this.countDown) {
+            this.countDown.unsubscribe();
+        }
         this.count = this.customCount ? this.customCount : 1500;
         this.time = this.formatTime(this.count);
     }
 
     pauseTimer() {
         this.isTimerPaused = !this.isTimerPaused;
-        if (this.isTimerPaused) {
+        if (this.isTimerPaused && this.countDown) {
             this.countDown.unsubscribe();
         } else {
             this.initTimer();

@@ -1,38 +1,36 @@
-<div *ngIf="timerService.todoros.length > 0" class="columns is-vcentered">
-    <div class="column is-three-fifths is-offset-one-fifth has-text-centered">
-        <div class="columns is-desktop is-vcentered">
-            <div class="column is-2">
+<div  class="columns is-centered">
+    <div class="column has-text-centered">
+        <div class="columns is-centered">
+            <div class="column is-1 has-text-centered">
                     <button mat-raised-button color="primary" (click)="initTimer()">
                         <mat-icon>play_arrow</mat-icon>
                         Start Timer
                     </button>
             </div>
-            <div class="column is-2">
+            <div class="column is-1 has-text-centered">
                 <button mat-raised-button color="accent" (click)="pauseTimer()">
                     <mat-icon>{{isTimerPaused ? 'play_circle_outline' : 'pause'}}</mat-icon>
                     {{isTimerPaused ? 'Resume Timer' : 'Pause Timer'}}
                 </button>
             </div>
 
-            <div class="column is-2">
+            <div class="column is-1 has-text-centered">
                 <button mat-raised-button color="warn" (click)="resetTimer()">
                     <mat-icon>replay</mat-icon>
                     Reset Timer
                 </button>
             </div>
 
-            <div class="column is-2">
-                <button (click)="openCustomTimerDialog()">
+            <div class="column is-1 has-text-centered">
+                <button mat-raised-button  (click)="openCustomTimerDialog()">
                     Custom Timer
                 </button>
             </div>
         </div>
+        <h1 style="font-size: 100%">{{time || '25:00'}}</h1>
     </div>
 </div>
 
 
-<div class="has-text-centered">
-    <h1>{{time || '25:00'}}</h1>
-</div>
-
+<!--*ngIf="timerService.todoros.length > 0"-->
 
