@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {DialogComponent} from '../dialog/dialog.component';
-import {TimerService} from '../timer.service';
+import {TimerService} from '../shared/timer.service';
 
 
 @Component({
@@ -45,7 +45,7 @@ export class TodoComponent implements OnInit {
     }
 
     deleteTodoro(array, index): void {
-        array.pop(index);
+        array.splice(index, 1);
     }
 
 }

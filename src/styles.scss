@@ -1,6 +1,16 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+// Colors
+
 $pink-main: #FF3860;
 $gray: #f2f2f2;
+
+// Fonts
+
+$fonts: (('Bungee', 'bungee'), ('Cabin Sketch', 'sketch'), ('Monoton', 'monoton'), ('Source Code Pro', 'scp'), ('VT323', 'vt'), ('Zilla Slab Highlight', 'zsh'));
+
+$bungee-font: 'bungee', cursive;
+$cabin: 'cabin-sketch', cursive;
+
 
 html {
   background-color: $gray;
@@ -20,6 +30,13 @@ $positions: ('top','left','bottom','right');
   }
 }
 
+@each $font, $font-name in $fonts {
+  .#{$font-name}-font {
+    font-family: $font;
+  }
+}
+
+
 .mat-tab-label-active {
   background-color: $pink-main;
   color: white;
@@ -28,3 +45,4 @@ $positions: ('top','left','bottom','right');
 .small-font {
   font-size: small;
 }
+

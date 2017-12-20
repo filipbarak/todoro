@@ -1,11 +1,11 @@
-<div  class="columns is-centered">
+<div *ngIf="timerService.todoros.length > 0" class="columns is-centered">
     <div class="column has-text-centered">
         <div class="columns is-centered">
             <div class="column is-1 has-text-centered">
-                    <button mat-raised-button color="primary" (click)="initTimer()">
-                        <mat-icon>play_arrow</mat-icon>
-                        Start Timer
-                    </button>
+                <button mat-raised-button color="primary" (click)="initTimer()">
+                    <mat-icon>play_arrow</mat-icon>
+                    Start Timer
+                </button>
             </div>
             <div class="column is-1 has-text-centered">
                 <button mat-raised-button color="accent" (click)="pauseTimer()">
@@ -22,15 +22,19 @@
             </div>
 
             <div class="column is-1 has-text-centered">
-                <button mat-raised-button  (click)="openCustomTimerDialog()">
+                <button mat-raised-button (click)="openCustomTimerDialog()">
                     Custom Timer
                 </button>
             </div>
         </div>
-        <h1 style="font-size: 100%">{{time || '25:00'}}</h1>
+        <h1 [ngClass]="activeFont + '-font'" style="font-size: 700%">{{time || '25:00'}}</h1>
+        <div matTooltip="Change the Clock Style!">
+            <button mat-mini-fab color="warn" (click)="changeFont()">
+                <mat-icon aria-label="Change the font">cached</mat-icon>
+            </button>
+        </div>
+
+
     </div>
 </div>
-
-
-<!--*ngIf="timerService.todoros.length > 0"-->
-
+<simple-notifications [options]="utilService.options"></simple-notifications>

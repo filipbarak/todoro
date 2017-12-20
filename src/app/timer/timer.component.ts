@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {TimerService} from '../timer.service';
+import {TimerService} from '../shared/timer.service';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/timer';
 import {take, map} from 'rxjs/operators';
 import {MatDialog} from '@angular/material';
 import {CustomTimerDialogComponent} from '../custom-timer-dialog/custom-timer-dialog.component';
+import {UtilService} from '../shared/util.service';
 
 
 @Component({
@@ -18,8 +19,13 @@ export class TimerComponent implements OnInit {
     count = 1500;
     time;
     isTimerPaused = false;
+    activeFont = 'bungee';
+    selectedIndex = 1;
+    fonts = ['bungee', 'sketch', 'monoton', 'scp', 'vt', 'zsh'];
 
-    constructor(public dialog: MatDialog, private timerService: TimerService) {
+    constructor(public dialog: MatDialog,
+                private timerService: TimerService,
+                private utilService: UtilService) {
     }
 
     ngOnInit() {
@@ -34,6 +40,7 @@ export class TimerComponent implements OnInit {
             .subscribe(ticks => {
                 this.time = this.formatTime(ticks);
             });
+        this.isTimerPaused = false;
     }
 
     resetTimer() {
@@ -42,6 +49,7 @@ export class TimerComponent implements OnInit {
         }
         this.count = this.customCount ? this.customCount : 1500;
         this.time = this.formatTime(this.count);
+        this.isTimerPaused = true;
     }
 
     pauseTimer() {
@@ -81,6 +89,13 @@ export class TimerComponent implements OnInit {
             this.customCount = result;
             result ? this.count = result : this.count = 1500;
             this.time = this.formatTime(this.count);
+            this.utilService.successNotification('Success!', `Custom timer of ${this.time} added.`);
         });
+    }
+
+    changeFont() {
+        this.activeFont = this.fonts[this.selectedIndex];
+        this.selectedIndex++;
+        this.selectedIndex = this.selectedIndex === this.fonts.length ? 0 : this.selectedIndex;
     }
 }

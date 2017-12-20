@@ -13,15 +13,20 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
+import {SimpleNotificationsModule} from 'angular2-notifications';
+
 
 
 import {AppComponent} from './app.component';
-import { TodoComponent } from './todo/todo.component';
-import { DialogComponent } from './dialog/dialog.component';
-import { TimerComponent } from './timer/timer.component';
-import { CustomTimerDialogComponent } from './custom-timer-dialog/custom-timer-dialog.component';
+import {TodoComponent} from './todo/todo.component';
+import {DialogComponent} from './dialog/dialog.component';
+import {TimerComponent} from './timer/timer.component';
+import {CustomTimerDialogComponent} from './custom-timer-dialog/custom-timer-dialog.component';
 
-import {TimerService} from './timer.service';
+import {TimerService} from './shared/timer.service';
+import {UtilService} from './shared/util.service';
 
 
 @NgModule({
@@ -44,13 +49,15 @@ import {TimerService} from './timer.service';
         MatTabsModule,
         MatDialogModule,
         MatCardModule,
-        MatButtonToggleModule
+        MatButtonToggleModule,
+        SimpleNotificationsModule.forRoot(),
+        MatTooltipModule
     ],
     entryComponents: [
         DialogComponent,
         CustomTimerDialogComponent
     ],
-    providers: [TimerService],
+    providers: [TimerService, UtilService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
