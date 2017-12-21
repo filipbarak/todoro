@@ -27,6 +27,11 @@
                 </button>
             </div>
         </div>
+        <div *ngIf="timerName">
+            <p class="sketch-font" style="font-size: 200%">
+                {{timerName}}
+            </p>
+        </div>
         <h1 [ngClass]="activeFont + '-font'" style="font-size: 700%">{{time || '25:00'}}</h1>
         <div matTooltip="Change the Clock Style!">
             <button mat-mini-fab color="warn" (click)="changeFont()">

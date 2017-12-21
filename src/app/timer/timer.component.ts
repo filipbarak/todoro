@@ -22,6 +22,7 @@ export class TimerComponent implements OnInit {
     activeFont = 'bungee';
     selectedIndex = 1;
     fonts = ['bungee', 'sketch', 'monoton', 'scp', 'vt', 'zsh'];
+    timerName = '';
 
     constructor(public dialog: MatDialog,
                 private timerService: TimerService,
@@ -86,10 +87,11 @@ export class TimerComponent implements OnInit {
         });
         dialogRef.afterClosed().subscribe(result => {
             console.log('The dialog was closed', result);
-            this.customCount = result;
-            result ? this.count = result : this.count = 1500;
+            this.customCount = result[0];
+            result[0] ? this.count = result[0] : this.count = 1500;
             this.time = this.formatTime(this.count);
             this.utilService.successNotification('Success!', `Custom timer of ${this.time} added.`);
+            this.timerName = result[1];
         });
     }
 

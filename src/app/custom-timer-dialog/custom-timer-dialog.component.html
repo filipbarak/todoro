@@ -1,3 +1,15 @@
+<div class="columns">
+    <div class="column is-half is-offset-one-quarter">
+        <mat-form-field>
+            <input #nameField matInput type="text">
+            <mat-placeholder>
+                <mat-icon>mode_edit</mat-icon>
+                Enter a name
+            </mat-placeholder>
+        </mat-form-field>
+
+    </div>
+</div>
 <nav class="level">
     <div class="level-left">
         <div class="level-item is-5">
@@ -33,7 +45,7 @@
 <div class="columns">
     <div class="column is-half is-pulled-left">
         <p class="has-text-right">
-            <button [mat-dialog-close]="saveTime(minutes.value, seconds.value)"
+            <button [mat-dialog-close]="saveTime(minutes, seconds, nameField)"
                     mat-raised-button
                     color="accent">Save
             </button>

@@ -18,7 +18,8 @@ export class CustomTimerDialogComponent implements OnInit {
         this.dialogRef.close();
     }
 
-    saveTime(minutes, seconds): number {
-      return Number(minutes * 60) + Number(seconds);
+    saveTime(minutes, seconds, name) {
+      let time = Number(minutes.value * 60) + Number(seconds.value);
+      return [time, name.value];
     }
 }
