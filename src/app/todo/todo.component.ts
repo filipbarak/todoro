@@ -15,9 +15,6 @@ export class TodoComponent implements OnInit {
     constructor(public dialog: MatDialog, private timerService: TimerService) {
     }
 
-    ngOnInit() {
-    }
-
     addTodoro(input, description): void {
         this.timerService.todoros.push({
             todo: this.todoValue,
