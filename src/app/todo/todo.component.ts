@@ -11,7 +11,7 @@ import {TimerService} from '../shared/timer.service';
 })
 export class TodoComponent implements OnInit {
     todoValue = '';
-    description = 'Some Desc..'
+    description = ''
     constructor(public dialog: MatDialog, private timerService: TimerService) {
     }
 
@@ -35,7 +35,6 @@ export class TodoComponent implements OnInit {
                     title: this.todoValue}
         });
         dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed', result);
             this.description = result;
             this.addTodoro(input, result);
         });
